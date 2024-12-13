@@ -1,5 +1,5 @@
 import {useState} from "react";
-import Teaxtarea from "../ui/Teaxtarea";
+import Teaxtarea from "../ui/app-textarea";
 
 const  AutocorrectTextArea= ({dictionary = {}}) => {
 

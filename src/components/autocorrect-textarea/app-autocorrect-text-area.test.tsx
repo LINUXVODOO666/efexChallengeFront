@@ -17,9 +17,7 @@ afterEach(() => {
 
 test('TEST 1: Single word auto-correction', () => {
     const { getByTestId } = renderApp(dictionary);
-
     const input = getByTestId(testIds.input);
-
     const incorrectWords = Object.getOwnPropertyNames(dictionary);
 
     // The input value should remain the same as no space is entered
@@ -28,14 +26,14 @@ test('TEST 1: Single word auto-correction', () => {
 
     // Add a space to trigger the autocomplete function
     fireEvent.input(input, { target: { value: ' ' } });
-    expect(input).toHaveValue(dictionary[incorrectWords[0] as keyof typeof dictionary] + ' ');
+    const expected_word_0 = dictionary[incorrectWords[0] as keyof typeof dictionary]
+
+    expect(input).toHaveValue(expected_word_0 + ' ');
 });
 
 test('TEST 2: Multiple words auto-correction', () => {
     const { getByTestId } = renderApp(dictionary);
-
     const input = getByTestId(testIds.input);
-
     const incorrectWords = Object.getOwnPropertyNames(dictionary);
 
     // The input value should be the same before entering a space
@@ -44,5 +42,9 @@ test('TEST 2: Multiple words auto-correction', () => {
 
     // Add a space to trigger the autocomplete function for both words
     fireEvent.input(input, { target: { value: ' ' } });
-    expect(input).toHaveValue(dictionary[incorrectWords[0] as keyof typeof dictionary] + ' ' + dictionary[incorrectWords[1] as keyof typeof dictionary] + ' ');
+
+    const expected_word_0 = dictionary[incorrectWords[0] as keyof typeof dictionary]
+    const expected_word_1 = dictionary[incorrectWords[1] as keyof typeof dictionary]
+
+    expect(input).toHaveValue(expected_word_0 + ' ' + expected_word_1 + ' ');
 });

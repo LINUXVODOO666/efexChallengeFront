@@ -1,6 +1,6 @@
 import './App.css';
 import {dictionary} from "./utilities/constants";
-import Navbar from "./components/app-header";
+import Navbar from "./components/ui/app-header";
 import AutocorrectTextArea from './components/autocorrect-textarea/app-autocorrect-text-area';
 
 function App() {
